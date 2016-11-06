@@ -75,6 +75,17 @@ for (N in 1:length(PDF)) {
     }
   }
   
+  ## Fix Data Entry Errors on Page 874 and 883
+  if (N == 874) {
+    pagerows[[21]] <- c(pagerows[[21]][1], pagerows[[20]], pagerows[[21]][-1])
+    pagerows[[22]] <- c(pagerows[[22]], pagerows[[23]])
+    pagerows <- pagerows[-20]
+    pagerows <- pagerows[-22]
+  } else if (N == 883) {
+    pagerows[[21]] <- c(pagerows[[21]][1], pagerows[[20]], pagerows[[21]][-1])
+    pagerows <- pagerows[-20]
+  }
+
   ## Create DF From List
   pageN <- as.data.frame(
     matrix(
